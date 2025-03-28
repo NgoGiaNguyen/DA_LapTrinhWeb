@@ -1,0 +1,49 @@
+﻿@model DA.Models.Product
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+    <div class="brand_color">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>Thêm sản phẩm</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+     <form asp-action="Add" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="id" />
+        <div class="form-group">
+            <label asp-for="name">Tên sản phẩm</label>
+            <input asp-for="name" class="form-control" />
+            <span asp-validation-for="name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="price">Giá sản phẩm</label>
+            <input asp-for="price" class="form-control" />
+            <span asp-validation-for="price" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="description">Mô tả</label>
+            <textarea asp-for="description" class="form-control"></textarea>
+
+            <span asp-validation-for="description" class="text-danger"></span>
+
+        </div>
+        <div class="form-group">
+            <label asp-for="categoryId">Loại mặt hàng</label>
+            <select asp-for="categoryId" asp-items="ViewBag.Categories" class="form-control"></select>
+        </div>
+        <div class="form-group">
+            <label asp-for="imageULR">Hình Ảnh</label>
+            <input type="file" asp-for="imageULR" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Thêm mới</button>
+        <a asp-action="Index">Trở về</a>
+    </form>
+   

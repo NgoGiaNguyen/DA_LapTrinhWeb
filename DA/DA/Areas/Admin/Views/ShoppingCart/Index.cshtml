@@ -1,0 +1,45 @@
+﻿@model ThongKe
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+    <div class="brand_color">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>Danh sách đơn hàng</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên khách hàng</th>
+                <th>Ngày đặt</th>
+                <th>Giá</th>
+                <th>Mô tả</th>
+                <th>Hoạt Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.userName</td>
+                    <td>@order.OrderDate</td>
+                    <td>@string.Format("{0:N0}", @order.TotalPrice)</td>
+                    <td>@order.Notes</td>
+                    <td>
+                        <a asp-action="Display" asp-route-id="@order.Id">Chi tiết</a>
+                    </td>
+
+                </tr>
+            }
+            <li>Số Đơn Hàng: @Model.TongOrders</li>
+            <li>Tổng doanh thu: @string.Format("{0:N0}", @Model.TotalPrice) VNĐ</li>
+        </tbody>
+    </table>
+ 

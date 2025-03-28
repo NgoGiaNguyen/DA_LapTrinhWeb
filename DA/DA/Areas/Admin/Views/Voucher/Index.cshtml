@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DA.Models.Voucher>
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="brand_color">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>Danh sách Mã giảm giá</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Giá trị giảm giá</th>
+            <th>Mô tả</th>
+            <th>Mã giảm giá</th>
+            <th>Hoạt Động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var voucher in Model)
+        {
+            <tr>
+
+                <td>@voucher.Name</td>
+                <td>@voucher.Value%</td>
+                <td>@voucher.Description</td>
+                <td>@voucher.Code</td>
+                <td>
+
+                    <a asp-action="Update" asp-route-id="@voucher.Id">Chỉnh sửa</a> |
+
+                    <a asp-action="Delete" asp-route-id="@voucher.Id">Xóa</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

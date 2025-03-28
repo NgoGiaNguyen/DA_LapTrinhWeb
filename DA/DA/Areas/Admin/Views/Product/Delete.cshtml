@@ -1,0 +1,35 @@
+﻿@model DA.Models.Product
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+    <!-- end header -->
+    <div class="brand_color">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>Xóa sản phẩm</h2>
+                    </div>
+               
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <form asp-action="DeleteConfirmed" method="post">
+        <input type="hidden" asp-for="id" />
+        <h2>Tên sản phẩm: @Model.name</h2>
+        <div>
+            <h3>Giá Sản phẩm: @Model.price</h3>
+            <p>Mô tả: @Model.description</p>
+            @if (!string.IsNullOrEmpty(Model.imageULR))
+            {
+                <img src="@Model.imageULR" alt="Product Image" style="max-width:300px;" />
+            }
+        </div>
+        <p>Bạn có chắc muốn xóa sản phẩm @Model.name?</p>
+        <button type="submit" class="btn btn-danger">Xóa</button>
+        <a asp-action="Index">Trở về</a>
+    </form>
+   

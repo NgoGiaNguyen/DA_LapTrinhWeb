@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DA.Models.Product>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="brand_color">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>Tất cả sản phẩm</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- our product -->
+<@* div class="product">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title">
+                    <h2>PHÒNG BÁN CHẠY</strong></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> *@
+<div class="product-bg">
+    <div class="product-bg-white">
+        <div class="container">
+            <div class="row">
+
+                @foreach (var product in Model)
+                {
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                        <div class="product-box">
+
+                            <i><img src=@product.imageULR /></i>
+                            <h3>@product.name </h3>
+                            <h3>@string.Format("{0:N0}", @product.price) VNĐ</h3>
+                            <form method="post" action="@Url.Action("AddToCart", "GioHang")">
+                                <input type="hidden" name="productId" value="@product.id" />
+                                <input type="hidden" name="quantity" value="1" />
+                                <button type="submit" class="btn btn-danger">Thêm vào giỏ hàng</button>
+
+                            </form>
+
+                            <a asp-action="Display" asp-route-id="@product.id">Chi tiết</a>
+
+                        </div>
+                    </div>
+
+                }
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

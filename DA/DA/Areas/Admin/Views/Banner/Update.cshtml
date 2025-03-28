@@ -1,0 +1,43 @@
+﻿@model DA.Models.Banner
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="brand_color">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>Chỉnh sửa Banner</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<form asp-action="Update" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Name">Tên banner</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductId">Mã sản phẩm</label>
+        <input asp-for="ProductId" class="form-control" />
+        <span asp-validation-for="ProductId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ViTri">Độ ưu tiên</label>
+        <input asp-for="ViTri" class="form-control" />
+        <span asp-validation-for="ViTri" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ImageURL">Hình Ảnh</label>
+        <input type="file" asp-for="ImageURL" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
+    <a asp-action="Index">Trở về</a>
+</form>
+

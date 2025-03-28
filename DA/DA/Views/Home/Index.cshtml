@@ -1,0 +1,236 @@
+﻿@model TrangChu
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="slider_section">
+    <div id="main_slider" class="carousel slide banner-main" data-ride="carousel">
+        <div class="carousel-inner">
+            @{
+                var item_active = 0;
+                foreach (var item in Model.Banners)
+                {
+                    if (item_active == 0)
+                    {
+                        item_active = 1;
+                        <div class="carousel-item active">
+                            <img src="@item.ImageURL" alt="@item.Name" width="1000px" height="680px">
+                            <div class="carousel-caption">
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="carousel-item">
+                            <img src="@item.ImageURL" alt="@item.Name" width="1000px" height="680px">
+                            <div class="carousel-caption">
+                            </div>
+                        </div>
+                    }
+
+                   
+                }
+            }
+        </div>
+        <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+        <a class="carousel-control-next" href="#main_slider" role="button" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+        </a>
+    </div>
+</section>
+
+
+<div class="whyschose">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 offset-md-3">
+                <div class="title">
+                    <h2>FLASH SALE</h2>
+                    <span>Miễn phí giao hàng trong toàn quốc!!!!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="choose_bg">
+    <div class="container">
+        <div class="white_bg">
+            <div class="row">
+                @foreach (var item in Model.Chuot)
+                {
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                        <div class="for_box">
+                            <i><img src="@item.imageULR" class="img-rouded" alt="@item.name" /></i>
+                            <div class="caption">
+                                <h4>@item.name</h4>
+                                <p>Giá: @string.Format("{0:N0}", item.price) VNĐ</p>
+                                <a asp-action="Display" asp-controller="Product" asp-route-id="@item.id">Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="col-md-12">
+                    <p class="read-more">
+                        <a href="/Chuot" > XEM THÊM</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title">
+                    <h2>Sản phẩm mới</strong></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-bg">
+    <div class="product-bg-white">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.products)
+                {
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                        <div class="for_box">
+                            <i><img src="@item.imageULR" class="img-rouded" alt="@item.name" /></i>
+                            <div class="caption">
+                                <h4>@item.name</h4>
+                                <p>Giá: @string.Format("{0:N0}", item.price) VNĐ</p>
+                                <a asp-action="Display" asp-controller="Product" asp-route-id="@item.id">Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="col-md-12">
+                    <p class="read-more">
+                        <a href="/TaiNghe" > XEM THÊM</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    <div class="product">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">
+                        <h2>Lap top bán chạy</strong></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-bg">
+        <div class="product-bg-white">
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in Model.LapTop)
+                    {
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                            <div class="for_box">
+                                <i><img src="@item.imageULR" class="img-rouded" alt="@item.name" /></i>
+                                <div class="caption">
+                                    <h4>@item.name</h4>
+                                    <p>Giá: @string.Format("{0:N0}", item.price) VNĐ</p>
+                                    <a asp-action="Display" asp-controller="Product" asp-route-id="@item.id">Chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="col-md-12">
+                    <p class="read-more">
+                        <a href="/LapTop" > XEM THÊM</a>
+                    </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="product">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title">
+                    <h2>Màn hình bán chạy</strong></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-bg">
+    <div class="product-bg-white">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.ManHinh)
+                {
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                        <div class="for_box">
+                            <i><img src="@item.imageULR" class="img-rouded" alt="@item.name" /></i>
+                            <div class="caption">
+                                <h4>@item.name</h4>
+                                <p>Giá: @string.Format("{0:N0}", item.price) VNĐ</p>
+                                <a asp-action="Display" asp-controller="Product" asp-route-id="@item.id">Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="col-md-12">
+                    <p class="read-more">
+                        <a href="/ManHinh" > XEM THÊM</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="product">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title">
+                    <h2>Bàn Phím bán chạy</strong></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-bg">
+    <div class="product-bg-white">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.BanPhim)
+                {
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                        <div class="for_box">
+                            <i><img src="@item.imageULR" class="img-rouded" alt="@item.name" /></i>
+                            <div class="caption">
+                                <h4>@item.name</h4>
+                                <p>Giá: @string.Format("{0:N0}", item.price) VNĐ</p>
+                                <a asp-action="Display" asp-controller="Product" asp-route-id="@item.id">Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="col-md-12">
+                    <p class="read-more">
+                        <a href="/BanPhim" > XEM THÊM</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

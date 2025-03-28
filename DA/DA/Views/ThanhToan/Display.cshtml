@@ -1,0 +1,64 @@
+﻿@model DA.Models.Order
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="brand_color">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>Chi tiết đơn hàng</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Lastestnews -->
+    <main role="main">
+        <!-- Block content - Đục lỗ trên giao diện bố cục chung, đặt tên là `content` -->
+        <div class="container mt-4">
+            <div id="thongbao" class="alert alert-danger d-none face" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+
+            <div class="row">
+                <div class="col col-md-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Ảnh đại diện</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Đơn giá</th>
+                                <th>Thành tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody id="datarow">
+                            @foreach (var item in Model.OrderDetails)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src=@item.Product.imageULR class="hinhdaidien">
+                                    </td>
+                                    <td class="text-right"> @item.Product.name</td>
+                                    <td class="text-right">@item.Quantity</td>
+                                    <td class="text-right">@string.Format("{0:N0}", @item.Price) VNĐ</td>
+
+                                    <td class="text-right">@string.Format("{0:N0}", (@item.Price * @item.Quantity)) VNĐ</td>
+                                </tr>
+
+
+                            }
+                        </tbody>
+                    </table>
+                      <a <a asp-action="OrderList" asp-controller="ThanhToan" class="btn btn-primary btn-md">
+                        <i class="fa fa-shopping-cart" href aria-hidden="true"></i>&nbsp;Trở về
+                    </a>
+                </div>
+            </div>
+        </div>
+     

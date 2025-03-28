@@ -1,0 +1,54 @@
+﻿@model IEnumerable<DA.Models.Product>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+    <div class="brand_color">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>Danh sách sản phẩm</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Giá</th>
+            <th>Mô tả</th>
+            <th>Loại</th>
+            <th>Hoạt Động</th>
+            <th>Hình Ảnh</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+
+                <td>@product.name</td>
+                <td>@string.Format("{0:N0}",@product.price)</td>
+                <td>@product.description</td>
+                <td>@product.category.name</td>
+                <td>
+
+                    <a asp-action="Display" asp-route-id="@product.id">Chi tiết</a> |
+
+                    <a asp-action="Update" asp-route-id="@product.id">Chỉnh sửa</a> |
+
+                    <a asp-action="Delete" asp-route-id="@product.id">Xóa</a>
+
+                </td>
+                <td>
+                    <img src="@product.imageULR" alt="Product Image" style="width: 300px; height: auto;  " />
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

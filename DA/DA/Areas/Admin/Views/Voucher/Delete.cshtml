@@ -1,0 +1,31 @@
+﻿@model DA.Models.Voucher
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!-- end header -->
+<div class="brand_color">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>Xóa Mã giảm giá</h2>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <h2>Tên Mã giám giá: @Model.Name</h2>
+    <div>
+        <h3>Mã Sản phẩm: @Model.Code</h3>
+        <p>Mô tả: @Model.Description</p>
+        <p>Giá trị: @Model.Value</p>
+    </div>
+    <p>Bạn có chắc muốn xóa Mã giảm giá @Model.Name?</p>
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="Index">Trở về</a>
+</form>

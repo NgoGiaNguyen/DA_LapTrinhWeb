@@ -1,0 +1,48 @@
+﻿@model IEnumerable<DA.Models.Banner>
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="brand_color">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>Danh sách Banner</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Hình ảnh</th>
+            <th>ID Sản phẩm</th>
+            <th>Độ ưu tiên</th>
+            <th>Hoạt Động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var banner in Model)
+        {
+            <tr>
+
+                <td>@banner.Name</td>
+                <td>
+                    <img src="@banner.ImageURL" alt="Product Image" style="width: 300px; height: auto;  " />
+                </td>
+                <td>@banner.ProductId</td>
+                <td>@banner.ViTri</td>
+                <td>
+
+                    <a asp-action="Update" asp-route-id="@banner.Id">Chỉnh sửa</a> |
+
+                    <a asp-action="Delete" asp-route-id="@banner.Id">Xóa</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

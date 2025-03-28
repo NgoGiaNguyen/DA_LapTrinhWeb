@@ -1,0 +1,64 @@
+﻿@model DA.Models.Product
+@{
+   Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+     <div class="brand_color">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>Chi tiết sản phẩm</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="whyschose">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 offset-md-5">
+                    <div class="title">
+                        <h2>CHI TIẾT SẢN PHẨM </h2>
+                        <span>Miễn phí giao hàng trong toàn quốc!!!!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="choose_bg">
+        <div class="container">
+            <div class="white_bg">
+                <div class="row">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <img id="mainImage" src="@Model.imageULR" alt="MainImage" class="img-responsive main-image">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                            <h2>@Model.name</h2>
+                            <h4>Giá gốc: <strike style="color:red;">@string.Format("{0:N0}", (float)Model.price * 1.5) VNĐ</strike></h4>
+                            <h4>Giá giảm sốc: <i style="font-weight: bold; color: green;">@string.Format("{0:N0}", (float)Model.price) VNĐ</i></h4
+                                    <div class="form-group">
+                                        <div class="col-md-offset-4 col-md-8">
+                                            <a asp-action="Index">Trở về</a>
+                                        </div>
+                                     </div>
+                               
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h4>Thông tin sản phẩm:</h4>
+                            <p style="text-align: justify">
+                                @Html.Raw(Model.description)
+                            </p>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>

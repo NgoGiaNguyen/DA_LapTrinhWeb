@@ -1,0 +1,32 @@
+﻿@model DA.Models.Banner
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!-- end header -->
+<div class="brand_color">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>Xóa Banner</h2>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <h2>Tên Mã giám giá: @Model.Name</h2>
+    <div>
+        @if (!string.IsNullOrEmpty(Model.ImageURL))
+        {
+            <img src="@Model.ImageURL" alt="Product Image" style="max-width:300px;" />
+        }
+    </div>
+    <p>Bạn có chắc muốn xóa Banner @Model.Name?</p>
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="Index">Trở về</a>
+</form>

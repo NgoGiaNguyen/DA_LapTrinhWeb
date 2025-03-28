@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DA.Models.Hotline>
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="brand_color">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>Danh sách liên hệ</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên người gửi</th>
+            <th>Số điện thoại</th>
+            <th>Mô tả</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var hotline in Model)
+        {
+            <tr>
+
+                <td>@hotline.Name</td>
+                <td>@hotline.SDT</td>
+                <td>@hotline.Description</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@hotline.Id">Xóa</a>
+                </td>
+              
+            </tr>
+        }
+    </tbody>
+</table>

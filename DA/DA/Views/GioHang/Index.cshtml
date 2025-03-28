@@ -1,0 +1,80 @@
+﻿@model ShoppingCart
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="brand_color">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>Giỏ hàng</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Lastestnews -->
+    <main role="main">
+        <!-- Block content - Đục lỗ trên giao diện bố cục chung, đặt tên là `content` -->
+        <div class="container mt-4">
+            <div id="thongbao" class="alert alert-danger d-none face" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+
+            <div class="row">
+                <div class="col col-md-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Ảnh đại diện</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Đơn giá</th>
+                                <th>Thành tiền</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody id="datarow">
+                            @foreach (var item in Model.Items)
+                            {
+                                <tr>
+                                    <td class=" = text-right"> @item.Id</td>
+                                    <td>
+                                        <img src=@item.Image class="hinhdaidien">
+                                    </td>
+                                    <td class="text-right"> @item.Name</td>
+                                    <td class="text-right">@item.Quantity</td>
+                                    <td class="text-right">@string.Format("{0:N0}", @item.Price) VNĐ</td>
+
+                                    <td class="text-right">@string.Format("{0:N0}",(@item.Price * @item.Quantity)) VNĐ</td>
+                                    <td>
+                                        <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
+                                        <a asp-action="RemoveFromCart" asp-route-id="@item.ProductId" id="delete_3" data-sp-ma="4" class="btn btn-danger btn-delete-sanpham">
+                                            <i class="fa fa-trash" aria-hidden="true"></i> Xóa
+                                        </a>
+                                    </td>
+                                </tr>
+                                  
+                                
+                           }
+                        </tbody>
+                    </table>
+
+                    <a <a asp-action="Index" asp-controller="Home" class="btn btn-warning btn-md">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Quay
+                        về trang chủ
+                    </a>
+                    <a <a asp-action="Index" asp-controller="ThanhToan" class="btn btn-primary btn-md">
+                        <i class="fa fa-shopping-cart" href aria-hidden="true"></i>&nbsp;Thanh toán
+                    </a>
+                      <a <a asp-action="OrderList" asp-controller="ThanhToan" class="btn btn-primary btn-md">
+                        <i class="fa fa-shopping-cart" href aria-hidden="true"></i>&nbsp;Đơn hàng
+                    </a>
+                </div>
+            </div>
+        </div>
